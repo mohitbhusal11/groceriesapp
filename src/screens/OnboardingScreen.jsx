@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import React from 'react';
 
-const OnboardingScreen = () => {
+const OnboardingScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -29,7 +29,8 @@ const OnboardingScreen = () => {
           </View>
 
           <View style={styles.buttonView}>
-            <Pressable style={styles.butonContainer} android_ripple={{color: "#377b50"}}>
+            <Pressable style={styles.butonContainer} android_ripple={{color: "#377b50"}} 
+            onPress={() => navigation.replace('signin')}>
               <Text style={styles.buttonText}>Get Started</Text>
             </Pressable>
           </View>

@@ -1,12 +1,23 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import OnboardingScreen from './src/screens/OnboardingScreen'
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import SignInScreen from './src/screens/SignInScreen';
+
+
+const stack = createNativeStackNavigator()
 
 const App = () => {
   return (
-    <View style={styles.mainContainer}>
-      <OnboardingScreen/>
-    </View>
+    <NavigationContainer style={styles.mainContainer}>
+      <stack.Navigator screenOptions={{headerShown: false}} initialRouteName='onboarding'>
+
+        <stack.Screen name='onboarding' component={OnboardingScreen}/>
+        <stack.Screen name='signin' component={SignInScreen }/>
+
+      </stack.Navigator>
+    </NavigationContainer>
   )
 }
 
