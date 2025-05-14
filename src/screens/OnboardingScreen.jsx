@@ -12,6 +12,7 @@ const OnboardingScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
       <ImageBackground
+        blurRadius={5}
         source={require('../assets/onboarding_screen.png')}
         style={styles.image}>
         <View style={styles.contentContainer}>
@@ -29,8 +30,10 @@ const OnboardingScreen = ({navigation}) => {
           </View>
 
           <View style={styles.buttonView}>
-            <Pressable style={styles.butonContainer} android_ripple={{color: "#377b50"}} 
-            onPress={() => navigation.replace('signin')}>
+            <Pressable
+              style={styles.butonContainer}
+              android_ripple={{color: '#377b50'}}
+              onPress={() => navigation.navigate('signin')}>
               <Text style={styles.buttonText}>Get Started</Text>
             </Pressable>
           </View>
@@ -49,8 +52,8 @@ const styles = StyleSheet.create({
 
   image: {
     flex: 1,
-    resizeMode: "contain",
-    justifyContent: "flex-end",
+    resizeMode: 'contain',
+    justifyContent: 'flex-end',
   },
 
   logoImg: {
@@ -62,7 +65,7 @@ const styles = StyleSheet.create({
   },
 
   contentContainer: {
-    marginBottom: 90
+    marginBottom: 90,
   },
 
   titletext: {
@@ -89,21 +92,21 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     flex: 1,
     marginHorizontal: 31,
-    justifyContent: "center",
-    alignItems: "center",
-    paddingVertical: 25
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 25,
   },
 
   buttonView: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 40
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 40,
   },
 
   buttonText: {
-    color: "white",
+    color: 'white',
     fontSize: 18,
-    fontWeight: "600"
-  }
+    fontWeight: '600',
+  },
 });

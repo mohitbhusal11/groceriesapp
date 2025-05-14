@@ -1,5 +1,6 @@
 import {
   Image,
+  Pressable,
   ScrollView,
   StyleSheet,
   Text,
@@ -27,14 +28,11 @@ const SignInScreen = ({navigation}) => {
         <Text style={styles.titleText}>
           Get your groceries{'\n'}with nectar
         </Text>
-        <View style={styles.inputTextContainer}>
-          <TextInput
-            placeholder="0000011111"
-            placeholderTextColor="grey"
-            style={styles.inputText}
-            keyboardType="number-pad"
-          />
-        </View>
+        <Pressable style={styles.inputTextContainer} onPress={() => navigation.navigate('enterPhoneNumber')} >
+          <Text style={styles.inputText} >
+            +912233445566
+          </Text>
+        </Pressable>
 
         <Text style={styles.connectWithSocialText}>
           Or connect with social media
@@ -90,7 +88,7 @@ const styles = StyleSheet.create({
   },
 
   inputText: {
-    color: 'black',
+    color: 'grey',
     fontSize: 18,
     marginVertical: 10,
     paddingHorizontal: 25,
@@ -98,9 +96,10 @@ const styles = StyleSheet.create({
 
   inputTextContainer: {
     marginHorizontal: 25,
+    paddingVertical: 10,
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: 'black',
+    borderColor: 'grey',
     marginTop: 30,
   },
 
