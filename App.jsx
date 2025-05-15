@@ -5,6 +5,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SignInScreen from './src/screens/SignInScreen';
 import EnterPhoneNumberScreen from './src/screens/EnterPhoneNumberScreen';
+import OtpScreen from './src/screens/OtpScreen';
+import LocationScreen from './src/screens/LocationScreen';
 
 
 const stack = createNativeStackNavigator()
@@ -12,11 +14,13 @@ const stack = createNativeStackNavigator()
 const App = () => {
   return (
     <NavigationContainer style={styles.mainContainer}>
-      <stack.Navigator screenOptions={{headerShown: false}} initialRouteName='enterPhoneNumber'>
+      <stack.Navigator screenOptions={{headerShown: false}} initialRouteName='onboarding'>
 
         <stack.Screen name='onboarding' component={OnboardingScreen}/>
         <stack.Screen name='signin' component={SignInScreen }/>
         <stack.Screen name='enterPhoneNumber' component={EnterPhoneNumberScreen }/>
+        <stack.Screen name='otpScreen' component={OtpScreen }/>
+        <stack.Screen name='locationScreen' component={LocationScreen }/>
 
       </stack.Navigator>
     </NavigationContainer>
