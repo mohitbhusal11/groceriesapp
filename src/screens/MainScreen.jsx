@@ -13,6 +13,7 @@ const MainScreen = () => {
   return (
     <View style={styles.mainContainer}>
       <Tab.Navigator
+        initialRouteName="exploreScreen"
         screenOptions={{
           headerShown: false,
           tabBarActiveTintColor: '#53B175',

@@ -5,16 +5,14 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  TextInput,
   View,
 } from 'react-native';
 import React from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import Feather from 'react-native-vector-icons/Feather';
 import ProductsHeader from '../components/ProductsHeader';
 import ProductCard from '../components/ProductCard';
 import RectangleProductCard from '../components/RectangleProductCard';
-import { isEnabled } from 'react-native/Libraries/Performance/Systrace';
+import SearchCard from '../components/SearchCard';
 
 const productData = [
   {
@@ -87,48 +85,46 @@ const productData = [
 
 const dummyProduct = [
   {
-    productName: "Pulses",
-    bg_color: "#F8A44C", // soft orange
+    productName: 'Pulses',
+    bg_color: '#F8A44C', // soft orange
   },
   {
-    productName: "Rice",
-    bg_color: "#53B175", // mint green
+    productName: 'Rice',
+    bg_color: '#53B175', // mint green
   },
   {
-    productName: "Wheat Flour",
-    bg_color: "#F7C59F", // light peach
+    productName: 'Wheat Flour',
+    bg_color: '#F7C59F', // light peach
   },
   {
-    productName: "Lentils",
-    bg_color: "#C1DBB3", // soft green
+    productName: 'Lentils',
+    bg_color: '#C1DBB3', // soft green
   },
   {
-    productName: "Chickpeas",
-    bg_color: "#FCE38A", // pastel yellow
+    productName: 'Chickpeas',
+    bg_color: '#FCE38A', // pastel yellow
   },
   {
-    productName: "Sugar",
-    bg_color: "#B5EAEA", // light aqua
+    productName: 'Sugar',
+    bg_color: '#B5EAEA', // light aqua
   },
   {
-    productName: "Salt",
-    bg_color: "#AEDFF7", // light blue
+    productName: 'Salt',
+    bg_color: '#AEDFF7', // light blue
   },
   {
-    productName: "Cooking Oil",
-    bg_color: "#FFD6A5", // warm beige
+    productName: 'Cooking Oil',
+    bg_color: '#FFD6A5', // warm beige
   },
   {
-    productName: "Spices",
-    bg_color: "#FFB5A7", // coral pink
+    productName: 'Spices',
+    bg_color: '#FFB5A7', // coral pink
   },
   {
-    productName: "Tea Leaves",
-    bg_color: "#B4F8C8", // mint pastel
+    productName: 'Tea Leaves',
+    bg_color: '#B4F8C8', // mint pastel
   },
 ];
-
-
 
 const ShopScreen = () => {
   function seeAllProducts() {
@@ -147,20 +143,9 @@ const ShopScreen = () => {
         <Ionicons name="location-sharp" size={30} color="#4C4F4D" />
         <Text style={styles.locationText}>Dhaka, Banassre</Text>
       </View>
-      <View style={styles.searchContainer}>
-        <Feather
-          name="search"
-          size={20}
-          color="#000"
-          style={styles.searchIcon}
-        />
-        <TextInput
-          placeholder="Search Store"
-          placeholderTextColor={'grey'}
-          style={styles.inputText}
-          numberOfLines={1}
-          keyboardType="web-search"
-        />
+
+      <View style={styles.searchContainer} >
+        <SearchCard />
       </View>
 
       <View style={styles.bannerContainer}>{/* Add viewpagger */}</View>
@@ -180,7 +165,11 @@ const ShopScreen = () => {
           ItemSeparatorComponent={() => <View style={{width: 10}} />}
           contentContainerStyle={{paddingHorizontal: 25}}
           renderItem={({item}) => (
-            <ProductCard title={item.productName} desc={item.productDesc} productPrice={item.productPrice} />
+            <ProductCard
+              title={item.productName}
+              desc={item.productDesc}
+              productPrice={item.productPrice}
+            />
           )}
         />
       </View>
@@ -200,7 +189,11 @@ const ShopScreen = () => {
           ItemSeparatorComponent={() => <View style={{width: 10}} />}
           contentContainerStyle={{paddingHorizontal: 25}}
           renderItem={({item}) => (
-            <ProductCard title={item.productName} desc={item.productDesc} productPrice={item.productPrice} />
+            <ProductCard
+              title={item.productName}
+              desc={item.productDesc}
+              productPrice={item.productPrice}
+            />
           )}
         />
       </View>
@@ -213,17 +206,19 @@ const ShopScreen = () => {
         />
       </View>
 
-      <View style={styles.rectangleProductContainer} >
-
+      <View style={styles.rectangleProductContainer}>
         <FlatList
-        data={dummyProduct}
-        horizontal
-        contentContainerStyle={{paddingHorizontal: 25}}
-        ItemSeparatorComponent={() => <View style={{width: 10}} />}
-        renderItem={({item}) => <RectangleProductCard productName={item.productName} bgColor={item.bg_color} />}
+          data={dummyProduct}
+          horizontal
+          contentContainerStyle={{paddingHorizontal: 25}}
+          ItemSeparatorComponent={() => <View style={{width: 10}} />}
+          renderItem={({item}) => (
+            <RectangleProductCard
+              productName={item.productName}
+              bgColor={item.bg_color}
+            />
+          )}
         />
-        
-
       </View>
 
       <View style={styles.productsContainer}>
@@ -233,7 +228,11 @@ const ShopScreen = () => {
           ItemSeparatorComponent={() => <View style={{width: 10}} />}
           contentContainerStyle={{paddingHorizontal: 25}}
           renderItem={({item}) => (
-            <ProductCard title={item.productName} desc={item.productDesc} productPrice={item.productPrice} />
+            <ProductCard
+              title={item.productName}
+              desc={item.productDesc}
+              productPrice={item.productPrice}
+            />
           )}
         />
       </View>
@@ -270,30 +269,6 @@ const styles = StyleSheet.create({
     color: '#4C4F4D',
   },
 
-  searchContainer: {
-    marginTop: 20,
-    marginHorizontal: 25,
-    backgroundColor: '#F2F3F2',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    borderRadius: 15,
-  },
-
-  inputText: {
-    fontWeight: '600',
-    fontSize: 14,
-    padding: 0,
-    marginHorizontal: 10,
-    color: 'black',
-    flexGrow: 1,
-  },
-
-  searchIcon: {
-    marginVertical: 18,
-    marginStart: 15,
-  },
-
   bannerContainer: {
     height: 115,
     backgroundColor: 'blue',
@@ -312,7 +287,10 @@ const styles = StyleSheet.create({
   },
 
   rectangleProductContainer: {
+    marginTop: 20,
+  },
+
+  searchContainer: {
     marginTop: 20
   }
-
 });
