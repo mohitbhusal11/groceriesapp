@@ -1,9 +1,9 @@
 import { Image, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const ExploreProductCard = ({title, bgColor}) => {
+const ExploreProductCard = ({title, bgColor, borderColor}) => {
   return (
-    <View style={[styles.mainContainer, {backgroundColor: bgColor}]} >
+    <View style={[styles.mainContainer, {backgroundColor: bgColor, borderColor: borderColor}]} >
         <Image style={styles.imgView} source={require("../assets/dummy_ic.png")} />
       <Text style={styles.titleText} >{title}</Text>
     </View>
@@ -19,7 +19,9 @@ const styles = StyleSheet.create({
         flexDirection: "column",
         justifyContent: "space-between",
         alignItems: "center",
-        borderRadius: 18
+        borderRadius: 18,
+        margin: 5,
+        borderWidth: 1
     },
 
     imgView: {
@@ -34,6 +36,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 25,
         fontSize: 16,
         fontWeight: "600",
-        color: "#181725"
+        color: "#181725",
+        textAlign: "center"
     }
 })
