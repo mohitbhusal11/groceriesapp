@@ -2,6 +2,7 @@ import {Dimensions, FlatList, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import CheckOutButtonCard from '../components/CheckOutButtonCard';
 import FavouriteCard from '../components/FavouriteCard';
+import SimpleLargeBtn from '../components/SimpleLargeBtn';
 
 const productData = [
   {
@@ -98,7 +99,7 @@ const FavouriteScreen = () => {
         />
       </View>
       <View style={styles.checkoutButtonContainer}>
-        <CheckOutButtonCard>Go to Checkout</CheckOutButtonCard>
+        <SimpleLargeBtn>Add All To Cart</SimpleLargeBtn>
       </View>
     </View>
   );

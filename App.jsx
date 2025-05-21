@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StatusBar, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import OnboardingScreen from './src/screens/OnboardingScreen'
 import { NavigationContainer } from '@react-navigation/native';
@@ -15,6 +15,7 @@ const stack = createNativeStackNavigator()
 const App = () => {
   return (
     <NavigationContainer style={styles.mainContainer}>
+      <StatusBar barStyle="dark-content" backgroundColor="#ffffff" />
       <stack.Navigator screenOptions={{headerShown: false}} initialRouteName='mainAppScreen'>
 
         <stack.Screen name='onboarding' component={OnboardingScreen}/>
