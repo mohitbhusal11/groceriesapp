@@ -1,4 +1,4 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, StatusBar, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import ShopScreen from './ShopScreen';
@@ -13,7 +13,7 @@ const MainScreen = () => {
   return (
     <View style={styles.mainContainer}>
       <Tab.Navigator
-        initialRouteName="favouriteScreen"
+        initialRouteName="accountScreen"
         screenOptions={{
           headerShown: false,
           tabBarActiveTintColor: '#53B175',
