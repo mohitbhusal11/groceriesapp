@@ -13,7 +13,7 @@ const MainScreen = () => {
   return (
     <View style={styles.mainContainer}>
       <Tab.Navigator
-        initialRouteName="accountScreen"
+        initialRouteName="cartScreen"
         screenOptions={{
           headerShown: false,
           tabBarActiveTintColor: '#53B175',

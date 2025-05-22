@@ -1,7 +1,15 @@
-import { Dimensions, FlatList, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import {
+  Alert,
+  Dimensions,
+  FlatList,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
+import React, {useState} from 'react';
 import CartCard from '../components/CartCard';
 import CheckOutButtonCard from '../components/CheckOutButtonCard';
+import CheckOutBottomSheet from '../components/CheckOutBottomSheet';
 
 const productData = [
   {
@@ -72,29 +80,54 @@ const productData = [
   },
 ];
 
-const { width, height } = Dimensions.get('window');
+const {width, height} = Dimensions.get('window');
 
 const CartScreen = ({}) => {
+  const [totalPrice, setTotalPrice] = useState(12);
+  const [showBottomSheet, setShowBottomSheet] = useState(false);
+
+  function checkoutDialog() {
+    setShowBottomSheet(!showBottomSheet);
+  }
+
   return (
-    <View style={styles.mainContainer} >
+    <View style={styles.mainContainer}>
       <Text style={styles.titleText}>My Cart</Text>
-      <View style={styles.dividerView} ></View>
-      <View style={styles.cartProductContainer} >
+      <View style={styles.dividerView}></View>
+      <View style={styles.cartProductContainer}>
         <FlatList
-        data={productData}
-        renderItem={({item}) => <CartCard productName={item.productName} productDesc={item.productDesc} productPrice={item.productPrice} /> }
-        ItemSeparatorComponent={() => <View style={{height: 1, backgroundColor: "#E2E2E2", marginTop: 30}}/>}
-        contentContainerStyle={{paddingHorizontal: 25, paddingBottom: 25}}
+          data={productData}
+          renderItem={({item}) => (
+            <CartCard
+              productName={item.productName}
+              productDesc={item.productDesc}
+              productPrice={item.productPrice}
+            />
+          )}
+          ItemSeparatorComponent={() => (
+            <View
+              style={{height: 1, backgroundColor: '#E2E2E2', marginTop: 30}}
+            />
+          )}
+          contentContainerStyle={{paddingHorizontal: 25, paddingBottom: 25}}
         />
       </View>
-      <View style={styles.checkoutButtonContainer} >
-        <CheckOutButtonCard>Go to Checkout</CheckOutButtonCard>
+      <View style={styles.checkoutButtonContainer}>
+        <CheckOutButtonCard
+          totalPrice={totalPrice}
+          callFunction={checkoutDialog}>
+          Go to Checkout
+        </CheckOutButtonCard>
       </View>
-    </View>
-  )
-}
 
-export default CartScreen
+      {showBottomSheet && (
+        <CheckOutBottomSheet checkoutDialog={checkoutDialog} totalPrice={totalPrice} />
+      )}
+    </View>
+  );
+};
+
+export default CartScreen;
 
 const styles = StyleSheet.create({
   mainContainer: {
@@ -113,8 +146,8 @@ const styles = StyleSheet.create({
 
   dividerView: {
     height: 1,
-    backgroundColor: "#E2E2E2",
-    marginTop: 32
+    backgroundColor: '#E2E2E2',
+    marginTop: 32,
   },
 
   cartProductContainer: {
@@ -122,9 +155,9 @@ const styles = StyleSheet.create({
   },
 
   checkoutButtonContainer: {
-    position: "absolute",
+    position: 'absolute',
     marginHorizontal: 25,
     bottom: 15,
-    width: width-50
-  }
-})
+    width: width - 50,
+  },
+});

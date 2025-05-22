@@ -1,13 +1,13 @@
 import {Pressable, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 
-const CheckOutButtonCard = ({children}) => {
+const CheckOutButtonCard = ({children, totalPrice, callFunction}) => {
   return (
     <View style={styles.mainContainer}>
-      <Pressable style={styles.buttonContainer}>
+      <Pressable style={styles.buttonContainer} onPress={callFunction} >
         <Text style={styles.textView}>{children}</Text>
         <View style={styles.priceContainer}>
-          <Text style={styles.priceText}>$12.96</Text>
+          <Text style={styles.priceText}>${totalPrice}</Text>
         </View>
       </Pressable>
     </View>
